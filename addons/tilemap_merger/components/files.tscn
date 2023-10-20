@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://edg6m4g40n0o"]
+
+[ext_resource type="Script" path="res://addons/tilemap_merger/components/files.gd" id="1_mkq6l"]
+
+[node name="Files" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.5
+script = ExtResource("1_mkq6l")
+
+[node name="FileFilter" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+placeholder_text = "Filter Files"
+
+[node name="FileList" type="ItemList" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="item_clicked" from="FileList" to="." method="_on_file_list_item_clicked"]

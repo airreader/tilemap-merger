@@ -1,0 +1,452 @@
+[gd_scene load_steps=12 format=3 uid="uid://c507j3d4v67gr"]
+
+[ext_resource type="Script" path="res://addons/tilemap_merger/main_view.gd" id="1_j82rt"]
+[ext_resource type="PackedScene" uid="uid://edg6m4g40n0o" path="res://addons/tilemap_merger/components/files.tscn" id="2_0yja6"]
+[ext_resource type="PackedScene" uid="uid://2pyb6ea76iw5" path="res://addons/tilemap_merger/components/main_tile_map.tscn" id="3_68ysb"]
+[ext_resource type="PackedScene" uid="uid://c6b5vuaobcu2q" path="res://addons/tilemap_merger/components/file_folder.tscn" id="3_die8p"]
+[ext_resource type="Script" path="res://addons/tilemap_merger/components/tile_maps.gd" id="4_epr48"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7usa"]
+bg_color = Color(0.290196, 0.290196, 0.290196, 1)
+border_width_top = 2
+border_width_bottom = 4
+border_color = Color(0.290196, 0.290196, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyhdj"]
+bg_color = Color(0.290196, 0.290196, 0.290196, 1)
+border_width_top = 2
+border_width_bottom = 4
+border_color = Color(0.290196, 0.290196, 0.290196, 1)
+
+[sub_resource type="Image" id="Image_wv5pj"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 225, 225, 225, 76, 224, 224, 224, 228, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 228, 224, 224, 224, 73, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 229, 224, 224, 224, 72, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 73, 224, 224, 224, 226, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 181, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 181, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 178, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 181, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 234, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 64, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 225, 225, 225, 191, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 107, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 148, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 225, 225, 225, 150, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 106, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 192, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 227, 227, 227, 63, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 235, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 231, 231, 231, 21, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 227, 224, 224, 224, 74, 224, 224, 224, 81, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 195, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 73, 224, 224, 224, 226, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 225, 225, 225, 223, 228, 228, 228, 55, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_xfjr2"]
+image = SubResource("Image_wv5pj")
+
+[sub_resource type="Image" id="Image_o1b5f"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_7e6j1"]
+image = SubResource("Image_o1b5f")
+
+[node name="MainView" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_j82rt")
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/HSplitContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l7usa")
+text = "Base TileMap"
+horizontal_alignment = 1
+
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 0
+
+[node name="SaveAsButton" type="Button" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save As ..."
+
+[node name="OpenButton" type="Button" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Open File"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Save"
+
+[node name="Bookmarks" type="VSplitContainer" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+
+[node name="Files" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/Bookmarks" instance=ExtResource("2_0yja6")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="FileFolder" parent="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/Bookmarks" instance=ExtResource("3_die8p")]
+visible = false
+layout_mode = 2
+mouse_filter = 0
+
+[node name="TileMapContainer" type="MarginContainer" parent="VBoxContainer2/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TileMaps" type="Node2D" parent="VBoxContainer2/HSplitContainer/TileMapContainer"]
+unique_name_in_owner = true
+position = Vector2(673.357, 472.156)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("4_epr48")
+
+[node name="TileMap" parent="VBoxContainer2/HSplitContainer/TileMapContainer/TileMaps" instance=ExtResource("3_68ysb")]
+unique_name_in_owner = true
+layer_2/name = ""
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = ""
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = ""
+layer_4/enabled = true
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = ""
+layer_5/enabled = true
+layer_5/modulate = Color(1, 1, 1, 1)
+layer_5/y_sort_enabled = false
+layer_5/y_sort_origin = 0
+layer_5/z_index = 0
+layer_5/tile_data = PackedInt32Array()
+layer_6/name = ""
+layer_6/enabled = true
+layer_6/modulate = Color(1, 1, 1, 1)
+layer_6/y_sort_enabled = false
+layer_6/y_sort_origin = 0
+layer_6/z_index = 0
+layer_6/tile_data = PackedInt32Array()
+layer_7/name = ""
+layer_7/enabled = true
+layer_7/modulate = Color(1, 1, 1, 1)
+layer_7/y_sort_enabled = false
+layer_7/y_sort_origin = 0
+layer_7/z_index = 0
+layer_7/tile_data = PackedInt32Array()
+layer_8/name = ""
+layer_8/enabled = true
+layer_8/modulate = Color(1, 1, 1, 1)
+layer_8/y_sort_enabled = false
+layer_8/y_sort_origin = 0
+layer_8/z_index = 0
+layer_8/tile_data = PackedInt32Array()
+layer_9/name = ""
+layer_9/enabled = true
+layer_9/modulate = Color(1, 1, 1, 1)
+layer_9/y_sort_enabled = false
+layer_9/y_sort_origin = 0
+layer_9/z_index = 0
+layer_9/tile_data = PackedInt32Array()
+
+[node name="TempTileMap" type="TileMap" parent="VBoxContainer2/HSplitContainer/TileMapContainer/TileMaps"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.717647)
+z_as_relative = false
+format = 2
+layer_1/name = ""
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = ""
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = ""
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = 0
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = ""
+layer_4/enabled = true
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = false
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = ""
+layer_5/enabled = true
+layer_5/modulate = Color(1, 1, 1, 1)
+layer_5/y_sort_enabled = false
+layer_5/y_sort_origin = 0
+layer_5/z_index = 0
+layer_5/tile_data = PackedInt32Array()
+layer_6/name = ""
+layer_6/enabled = true
+layer_6/modulate = Color(1, 1, 1, 1)
+layer_6/y_sort_enabled = false
+layer_6/y_sort_origin = 0
+layer_6/z_index = 0
+layer_6/tile_data = PackedInt32Array()
+layer_7/name = ""
+layer_7/enabled = true
+layer_7/modulate = Color(1, 1, 1, 1)
+layer_7/y_sort_enabled = false
+layer_7/y_sort_origin = 0
+layer_7/z_index = 0
+layer_7/tile_data = PackedInt32Array()
+layer_8/name = ""
+layer_8/enabled = true
+layer_8/modulate = Color(1, 1, 1, 1)
+layer_8/y_sort_enabled = false
+layer_8/y_sort_origin = 0
+layer_8/z_index = 0
+layer_8/tile_data = PackedInt32Array()
+layer_9/name = ""
+layer_9/enabled = true
+layer_9/modulate = Color(1, 1, 1, 1)
+layer_9/y_sort_enabled = false
+layer_9/y_sort_origin = 0
+layer_9/z_index = 0
+layer_9/tile_data = PackedInt32Array()
+
+[node name="SideColumn" type="MarginContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(370, 2.08165e-12)
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 0
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/SideColumn"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/SideColumn/MarginContainer"]
+layout_mode = 2
+
+[node name="TileSetContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileSetContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileSetContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+text = "TileSet"
+
+[node name="TileSetMenuButton" type="MenuButton" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileSetContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "empty"
+icon_alignment = 2
+
+[node name="UnifiedTileSizeContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/UnifiedTileSizeContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/UnifiedTileSizeContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+text = "Snapped Tile Size"
+
+[node name="TileSizeSpinBox" type="SpinBox" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/UnifiedTileSizeContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+value = 7.0
+alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyhdj")
+text = "TileMap Brushes"
+horizontal_alignment = 1
+
+[node name="TileMapContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+text = "Selected TileMap"
+
+[node name="SelectTileMapButton" type="Button" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "empty"
+icon = SubResource("ImageTexture_xfjr2")
+icon_alignment = 2
+
+[node name="TileMapFolderContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapFolderContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapFolderContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+text = "TileMap Folder
+"
+
+[node name="TileMapFolderMenuButton" type="Button" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapFolderContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "res://"
+icon = SubResource("ImageTexture_7e6j1")
+icon_alignment = 2
+
+[node name="TileMapsContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapsContainer"]
+layout_mode = 2
+
+[node name="TileMapGridContainer" type="GridContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapsContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 2
+
+[node name="TileSetDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(600, 500)
+ok_button_text = "開く"
+dialog_hide_on_ok = true
+file_mode = 0
+filters = PackedStringArray("*.tres, *.res; TileSet")
+
+[node name="TileMapFolderDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a Directory"
+size = Vector2i(600, 400)
+ok_button_text = "現在のフォルダーを選択"
+file_mode = 2
+
+[node name="TileMapDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(600, 400)
+ok_button_text = "開く"
+file_mode = 0
+filters = PackedStringArray("*.tscn;TileMap")
+
+[node name="OpenMainTileMapDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(600, 400)
+ok_button_text = "開く"
+file_mode = 0
+filters = PackedStringArray("*.tscn;TileMap")
+
+[node name="SaveAsTileMapDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+size = Vector2i(600, 400)
+filters = PackedStringArray("*.tscn;TileMap")
+
+[connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/SaveAsButton" to="." method="_on_save_as_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/OpenButton" to="." method="_on_open_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="file_selected" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/Bookmarks/Files" to="." method="_on_files_file_selected"]
+[connection signal="mouse_entered" from="VBoxContainer2/HSplitContainer/TileMapContainer" to="." method="_on_tile_map_container_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer2/HSplitContainer/TileMapContainer" to="." method="_on_tile_map_container_mouse_exited"]
+[connection signal="about_to_popup" from="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileSetContainer/HBoxContainer/TileSetMenuButton" to="." method="_on_tile_set_menu_button_about_to_popup"]
+[connection signal="value_changed" from="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/UnifiedTileSizeContainer/HBoxContainer/TileSizeSpinBox" to="." method="_on_tile_size_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapContainer/HBoxContainer/SelectTileMapButton" to="." method="_on_select_tile_map_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer/TileMapFolderContainer/HBoxContainer/TileMapFolderMenuButton" to="." method="_on_tile_map_folder_menu_button_pressed"]
+[connection signal="file_selected" from="TileSetDialog" to="." method="_on_tile_set_dialog_file_selected"]
+[connection signal="dir_selected" from="TileMapFolderDialog" to="." method="_on_tile_map_folder_dialog_dir_selected"]
+[connection signal="file_selected" from="TileMapDialog" to="." method="_on_tile_map_dialog_file_selected"]
+[connection signal="file_selected" from="OpenMainTileMapDialog" to="." method="_on_open_main_tile_map_dialog_file_selected"]
+[connection signal="file_selected" from="SaveAsTileMapDialog" to="." method="_on_save_as_tile_map_dialog_file_selected"]
