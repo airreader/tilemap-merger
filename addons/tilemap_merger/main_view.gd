@@ -15,8 +15,11 @@ var selected_tile_set: TileSet:
 		var array = new_tile_set.resource_path.split("/", true, 0)
 		tile_set_menu_button.text = array[array.size()-1]
 		selected_tile_set = new_tile_set
+		tile_set_tile_id_map = get_tile_set_tile_id_map(new_tile_set)
 	get:
 		return selected_tile_set
+
+var tile_set_tile_id_map: Dictionary
 
 var selected_tile_map: TileMap:
 	set(new_tile_map):
@@ -43,6 +46,9 @@ var pointed_tile_position: Vector2i = Vector2i(0,0)
 var unified_tile_size: int = 7
 var mouse_hovered_tilemap_container = false
 
+var tile_name_key = "tile_name"
+var tile_order_id_key = "order_id"
+
 # tilemaps
 @onready var main_tilemap := %TileMap as TileMap
 @onready var temp_tilemap := %TempTileMap as TileMap
@@ -65,7 +71,7 @@ func _ready():
 	%TileMapFolderMenuButton.icon = get_theme_icon("Load", "EditorIcons")
 	%SelectTileMapButton.icon = get_theme_icon("Load", "EditorIcons")
 	%TileSetMenuButton.icon = get_theme_icon("GuiDropdown", "EditorIcons")
-
+	#get_tile_set_tile_id_map(load("res://sample/asset/main_tile_set.tres"))
 
 func _input(event):
 	if mouse_hovered_tilemap_container && selected_tile_set && selected_tile_map:
@@ -180,11 +186,23 @@ func load_tile_map(tilemap: TileMap, degree: int = 0) -> Dictionary:
 			var new_cell_source_id = tilemap.get_cell_source_id(i, v)
 			var new_cell_atlas_coords: Vector2i = tilemap.get_cell_atlas_coords(i, v)
 			var new_cell_alternative_id: int = tilemap.get_cell_alternative_tile(i,v)
-			#if new_cell_source_id == four_set_tileset_source_id: # stairsの場合
-				#var x = new_cell_atlas_coords.x
-				#x += selected_trap_rotate_degree / 90
-				#x = int(x)
-				#new_cell_atlas_coords.x = x % 4
+			
+			# tile自体の回転
+			var new_cell_tile_data = tilemap.get_cell_tile_data(i, v)
+			var new_cell_tile_name = new_cell_tile_data.get_custom_data(tile_name_key)
+			var new_cell_tile_order_id = new_cell_tile_data.get_custom_data(tile_order_id_key)
+			if new_cell_tile_name:
+				var same_tile_name_tiles = tile_set_tile_id_map[new_cell_source_id][new_cell_tile_name]
+				var current_index: int = 0
+				for same_tile_data in same_tile_name_tiles:
+					if same_tile_data.atlas_coords == new_cell_atlas_coords && same_tile_data.alternative_tile_id == new_cell_alternative_id:
+						break;
+					current_index += 1
+				var index_adjust = int(degree / 90)
+				current_index += index_adjust
+				var new_index = current_index % same_tile_name_tiles.size()
+				new_cell_atlas_coords = same_tile_name_tiles[new_index].atlas_coords
+				new_cell_alternative_id = same_tile_name_tiles[new_index].alternative_tile_id
 			tile_data.tile_data.append({
 				"layer": i,
 				"cell_position": cell_position,
@@ -240,7 +258,50 @@ func build_grid_container(tilemaps: Array[TileMap]):
 		)
 		tile_map_grid_container.add_child(button)
 
+
+func get_tile_set_tile_id_map(tile_set:TileSet) -> Dictionary:
+	var result = {}
+	var current = result
+	var tile_map = TileMap.new()
+	for source_index in range(0, tile_set.get_source_count()):
+		var source_id = tile_set.get_source_id(source_index)
+		if not result.has(source_id):
+			result[source_id] = {}
+		var tile_set_source = tile_set.get_source(source_id)
+		for tile_index in range(0, tile_set_source.get_tiles_count()):
+			var atlas_coords = tile_set_source.get_tile_id(tile_index)
+			for alternative_tile_index in tile_set_source.get_alternative_tiles_count(atlas_coords):
+				var alternative_tile_id = tile_set_source.get_alternative_tile_id(atlas_coords, alternative_tile_index)
+				var tile_data = tile_set_source.get_tile_data(atlas_coords, alternative_tile_id)
+				var tile_name = tile_data.get_custom_data(tile_name_key)
+				var tile_order_id = tile_data.get_custom_data(tile_order_id_key)
+				if not tile_name == "":
+					if not result[source_id].has(tile_name):
+						result[source_id][tile_name] = []
+					result[source_id][tile_name].append({
+						"order_id": tile_order_id,
+						"atlas_coords": atlas_coords,
+						"alternative_tile_id": alternative_tile_id
+					})
+	for source_id in result:
+		for tile_name in result[source_id]:
+			result[source_id][tile_name].sort_custom(sort_tile_name)
+	return result
 	
+	
+func sort_tile_name(a, b):
+	if a.order_id == null:
+		if a.atlas_coords.y < b.atlas_coords.y:
+			return true
+		else:
+			if a.atlas_coords.x < b.atlas_coords.x:
+				return true
+			return false
+	else:		
+		if a.order_id < b.order_id:
+			return true
+		else:
+			return false
 	
 func load_to_main_tile_map(tile_data: Dictionary):
 	main_tilemap.clear()

@@ -15,11 +15,12 @@ func _draw():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("isometric_tilemap_editor_middle_click"):
-		dragging = true
-		drag_start_position = get_viewport().get_mouse_position()
-	if Input.is_action_pressed("isometric_tilemap_editor_middle_click"):
-		position = position - (drag_start_position - get_viewport().get_mouse_position())
-		drag_start_position = get_viewport().get_mouse_position()
-	if Input.is_action_just_released("isometric_tilemap_editor_middle_click"):
-		dragging = false
+	if InputMap.has_action("isometric_tilemap_editor_middle_click"):
+		if Input.is_action_just_pressed("isometric_tilemap_editor_middle_click"):
+			dragging = true
+			drag_start_position = get_viewport().get_mouse_position()
+		if Input.is_action_pressed("isometric_tilemap_editor_middle_click"):
+			position = position - (drag_start_position - get_viewport().get_mouse_position())
+			drag_start_position = get_viewport().get_mouse_position()
+		if Input.is_action_just_released("isometric_tilemap_editor_middle_click"):
+			dragging = false

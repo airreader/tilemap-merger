@@ -55,8 +55,6 @@ func add_list_new_file(file_path: String, tile_data: Dictionary):
 	files[file_path] = {}
 	files[file_path].unsaved = false
 	files[file_path].buffer_tile_data = tile_data
-	#var index = list.add_item(file_path)
-	#list.set_item_metadata(index, { "file_path": file_path })
 	update_file_list()
 	
 	
