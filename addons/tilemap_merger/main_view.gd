@@ -71,6 +71,7 @@ func _ready():
 	%SelectTileMapButton.icon = get_theme_icon("Load", "EditorIcons")
 	%TileSetMenuButton.icon = get_theme_icon("GuiDropdown", "EditorIcons")
 	#get_tile_set_tile_id_map(load("res://sample/asset/main_tile_set.tres"))
+	%TileMaps.position = DisplayServer.screen_get_size() / 6
 
 func _input(event):
 	if mouse_hovered_tilemap_container && selected_tile_set && selected_tile_map:
@@ -86,9 +87,11 @@ func _input(event):
 			update_temp_tilemap()
 	if mouse_hovered_tilemap_container:
 		if event is InputEventMouseButton && event.pressed && event.button_index == 6: #button_index == 6 は shift+WHEEL_UP
-			(%TileMaps as Node2D).scale += Vector2(0.05, 0.05)
+			if (%TileMaps as Node2D).scale.x < 10:
+				(%TileMaps as Node2D).scale += Vector2(0.05, 0.05)
 		if event is InputEventMouseButton && event.pressed && event.button_index == 7: #button_index == 7 は shift+WHEEL_DOWN
-			(%TileMaps as Node2D).scale -= Vector2(0.05, 0.05)
+			if (%TileMaps as Node2D).scale.x > 0.05:
+				(%TileMaps as Node2D).scale -= Vector2(0.05, 0.05)
 
 
 func _process(_delta):

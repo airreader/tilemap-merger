@@ -20,7 +20,7 @@ var files: Dictionary = {}
 #}
 var current_file_path: String = ""
 
-var editor_plugin: EditorPlugin
+var editor_plugin: EditorPlugin = EditorPlugin.new()
 
 @onready var filter_edit: LineEdit = $FileFilter
 @onready var list: ItemList = $FileList
@@ -33,7 +33,7 @@ func save_as_file(tile_data: Dictionary, file_path: String = current_file_path):
 		files[file_path].buffer_tile_data = tile_data
 		update_file_list()
 		store_tile_map(file_path, tile_data)
-		editor_plugin.get_editor_interface().get_resource_filesystem().reimport_files([file_path])
+		#editor_plugin.get_editor_interface().get_resource_filesystem().reimport_files([file_path])
 		editor_plugin.get_editor_interface().get_resource_filesystem().scan()
 	else:
 		add_list_new_file(file_path, tile_data)
@@ -134,7 +134,7 @@ func _on_file_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 		select_file(item_file_path)
 	if mouse_button_index == MOUSE_BUTTON_RIGHT:
 		build_popup_menu(item_file_path)
-		popup_menu.position = get_local_mouse_position()
+		popup_menu.position = Vector2(get_viewport().position) + %FileList.global_position + at_position
 		popup_menu.popup()
 		
 		
@@ -151,6 +151,9 @@ func store_tile_map(path: String, tile_data: Dictionary):
 	var tile_map := TileMap.new() as TileMap
 	tile_map.clear()
 	tile_map.tile_set = load(tile_data.tile_set_path)
+	var max_layer = tile_data.tile_data.map(func(d): return d.layer).max()
+	for i in range(0, max_layer):
+		tile_map.add_layer(-1)
 	for data in tile_data.tile_data:
 		tile_map.set_cell(data.layer, data.cell_position, data.source_id, data.atlas_coords, data.alternative_id)
 	var packed = PackedScene.new()
