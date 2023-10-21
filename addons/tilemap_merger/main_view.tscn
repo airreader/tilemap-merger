@@ -12,7 +12,7 @@ border_width_top = 2
 border_width_bottom = 4
 border_color = Color(0.290196, 0.290196, 0.290196, 1)
 
-[sub_resource type="Image" id="Image_xpdim"]
+[sub_resource type="Image" id="Image_e61ay"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -21,8 +21,8 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_xmdp8"]
-image = SubResource("Image_xpdim")
+[sub_resource type="ImageTexture" id="ImageTexture_61kh3"]
+image = SubResource("Image_e61ay")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyhdj"]
 bg_color = Color(0.290196, 0.290196, 0.290196, 1)
@@ -127,12 +127,14 @@ script = ExtResource("4_epr48")
 
 [node name="TileMap" parent="VBoxContainer2/HSplitContainer/TileMapContainer/TileMaps" instance=ExtResource("3_68ysb")]
 unique_name_in_owner = true
+layer_1/navigation_enabled = true
 layer_2/name = ""
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
+layer_2/navigation_enabled = true
 layer_2/tile_data = PackedInt32Array()
 layer_3/name = ""
 layer_3/enabled = true
@@ -140,6 +142,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
+layer_3/navigation_enabled = true
 layer_3/tile_data = PackedInt32Array()
 layer_4/name = ""
 layer_4/enabled = true
@@ -147,6 +150,7 @@ layer_4/modulate = Color(1, 1, 1, 1)
 layer_4/y_sort_enabled = false
 layer_4/y_sort_origin = 0
 layer_4/z_index = 0
+layer_4/navigation_enabled = true
 layer_4/tile_data = PackedInt32Array()
 layer_5/name = ""
 layer_5/enabled = true
@@ -154,6 +158,7 @@ layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = false
 layer_5/y_sort_origin = 0
 layer_5/z_index = 0
+layer_5/navigation_enabled = true
 layer_5/tile_data = PackedInt32Array()
 layer_6/name = ""
 layer_6/enabled = true
@@ -161,6 +166,7 @@ layer_6/modulate = Color(1, 1, 1, 1)
 layer_6/y_sort_enabled = false
 layer_6/y_sort_origin = 0
 layer_6/z_index = 0
+layer_6/navigation_enabled = true
 layer_6/tile_data = PackedInt32Array()
 layer_7/name = ""
 layer_7/enabled = true
@@ -168,6 +174,7 @@ layer_7/modulate = Color(1, 1, 1, 1)
 layer_7/y_sort_enabled = false
 layer_7/y_sort_origin = 0
 layer_7/z_index = 0
+layer_7/navigation_enabled = true
 layer_7/tile_data = PackedInt32Array()
 layer_8/name = ""
 layer_8/enabled = true
@@ -175,6 +182,7 @@ layer_8/modulate = Color(1, 1, 1, 1)
 layer_8/y_sort_enabled = false
 layer_8/y_sort_origin = 0
 layer_8/z_index = 0
+layer_8/navigation_enabled = true
 layer_8/tile_data = PackedInt32Array()
 layer_9/name = ""
 layer_9/enabled = true
@@ -182,6 +190,7 @@ layer_9/modulate = Color(1, 1, 1, 1)
 layer_9/y_sort_enabled = false
 layer_9/y_sort_origin = 0
 layer_9/z_index = 0
+layer_9/navigation_enabled = true
 layer_9/tile_data = PackedInt32Array()
 
 [node name="TempTileMap" type="TileMap" parent="VBoxContainer2/HSplitContainer/TileMapContainer/TileMaps"]
@@ -195,6 +204,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
+layer_1/navigation_enabled = true
 layer_1/tile_data = PackedInt32Array()
 layer_2/name = ""
 layer_2/enabled = true
@@ -202,6 +212,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
+layer_2/navigation_enabled = true
 layer_2/tile_data = PackedInt32Array()
 layer_3/name = ""
 layer_3/enabled = true
@@ -209,6 +220,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
+layer_3/navigation_enabled = true
 layer_3/tile_data = PackedInt32Array()
 layer_4/name = ""
 layer_4/enabled = true
@@ -216,6 +228,7 @@ layer_4/modulate = Color(1, 1, 1, 1)
 layer_4/y_sort_enabled = false
 layer_4/y_sort_origin = 0
 layer_4/z_index = 0
+layer_4/navigation_enabled = true
 layer_4/tile_data = PackedInt32Array()
 layer_5/name = ""
 layer_5/enabled = true
@@ -223,6 +236,7 @@ layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = false
 layer_5/y_sort_origin = 0
 layer_5/z_index = 0
+layer_5/navigation_enabled = true
 layer_5/tile_data = PackedInt32Array()
 layer_6/name = ""
 layer_6/enabled = true
@@ -230,6 +244,7 @@ layer_6/modulate = Color(1, 1, 1, 1)
 layer_6/y_sort_enabled = false
 layer_6/y_sort_origin = 0
 layer_6/z_index = 0
+layer_6/navigation_enabled = true
 layer_6/tile_data = PackedInt32Array()
 layer_7/name = ""
 layer_7/enabled = true
@@ -237,6 +252,7 @@ layer_7/modulate = Color(1, 1, 1, 1)
 layer_7/y_sort_enabled = false
 layer_7/y_sort_origin = 0
 layer_7/z_index = 0
+layer_7/navigation_enabled = true
 layer_7/tile_data = PackedInt32Array()
 layer_8/name = ""
 layer_8/enabled = true
@@ -244,6 +260,7 @@ layer_8/modulate = Color(1, 1, 1, 1)
 layer_8/y_sort_enabled = false
 layer_8/y_sort_origin = 0
 layer_8/z_index = 0
+layer_8/navigation_enabled = true
 layer_8/tile_data = PackedInt32Array()
 layer_9/name = ""
 layer_9/enabled = true
@@ -251,6 +268,7 @@ layer_9/modulate = Color(1, 1, 1, 1)
 layer_9/y_sort_enabled = false
 layer_9/y_sort_origin = 0
 layer_9/z_index = 0
+layer_9/navigation_enabled = true
 layer_9/tile_data = PackedInt32Array()
 
 [node name="SideColumn" type="MarginContainer" parent="VBoxContainer2"]
@@ -292,7 +310,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
 text = "empty"
-icon = SubResource("ImageTexture_xmdp8")
+icon = SubResource("ImageTexture_61kh3")
 icon_alignment = 2
 
 [node name="UnifiedTileSizeContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
@@ -345,7 +363,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
 text = "empty"
-icon = SubResource("ImageTexture_xmdp8")
+icon = SubResource("ImageTexture_61kh3")
 icon_alignment = 2
 
 [node name="TileMapFolderContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]
@@ -369,7 +387,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
 text = "res://"
-icon = SubResource("ImageTexture_xmdp8")
+icon = SubResource("ImageTexture_61kh3")
 icon_alignment = 2
 
 [node name="TileMapsContainer" type="MarginContainer" parent="VBoxContainer2/SideColumn/MarginContainer/VBoxContainer"]

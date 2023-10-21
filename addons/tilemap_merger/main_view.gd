@@ -131,6 +131,7 @@ func erase_unified_tile_map(tile_data: Dictionary):
 	temp_tilemap.clear()
 	for data in tile_data.tile_data:
 		main_tilemap.erase_cell(data.layer, data.cell_position)
+	files.edit_file(load_tile_map(main_tilemap))
 	
 
 func build_tile_set_menu() -> void:
@@ -169,42 +170,43 @@ func load_tile_map(tilemap: TileMap, degree: int = 0) -> Dictionary:
 	for i in range(0, layer_count):
 		var cells_position = tilemap.get_used_cells(i)
 		for v in cells_position:
-			# 回転させたい
-			var cell_position = Vector2i(0,0)
-			var rad = deg_to_rad(degree)
-			cell_position.x = round(v.x * cos(rad) - v.y * sin(rad))
-			cell_position.y = round(v.x * sin(rad) + v.y * cos(rad))
-			var ajustment = Vector2i(0,0)
-			if degree == 90:
-				ajustment = Vector2i(-2*i, 0)
-			if degree == 180:
-				ajustment = Vector2i(-2*i, -2*i)
-			if degree == 270:
-				ajustment = Vector2i(0, -2*i)
-			cell_position += ajustment
-			# 回転ここまで
-
-			
 			var new_cell_source_id = tilemap.get_cell_source_id(i, v)
 			var new_cell_atlas_coords: Vector2i = tilemap.get_cell_atlas_coords(i, v)
 			var new_cell_alternative_id: int = tilemap.get_cell_alternative_tile(i,v)
-			
-			# tile自体の回転
 			var new_cell_tile_data = tilemap.get_cell_tile_data(i, v)
-			var new_cell_tile_name = new_cell_tile_data.get_custom_data(tile_name_key)
-			var new_cell_tile_order_id = new_cell_tile_data.get_custom_data(tile_order_id_key)
-			if new_cell_tile_name:
-				var same_tile_name_tiles = tile_set_tile_id_map[new_cell_source_id][new_cell_tile_name]
-				var current_index: int = 0
-				for same_tile_data in same_tile_name_tiles:
-					if same_tile_data.atlas_coords == new_cell_atlas_coords && same_tile_data.alternative_tile_id == new_cell_alternative_id:
-						break;
-					current_index += 1
-				var index_adjust = int(degree / 90)
-				current_index += index_adjust
-				var new_index = current_index % same_tile_name_tiles.size()
-				new_cell_atlas_coords = same_tile_name_tiles[new_index].atlas_coords
-				new_cell_alternative_id = same_tile_name_tiles[new_index].alternative_tile_id
+			var cell_position = v
+			
+			
+			if degree != 0:
+				# tile全体を回転させたい
+				var rad = deg_to_rad(degree)
+				cell_position.x = round(v.x * cos(rad) - v.y * sin(rad))
+				cell_position.y = round(v.x * sin(rad) + v.y * cos(rad))
+				var ajustment = Vector2i(0,0)
+				if degree == 90:
+					ajustment = Vector2i(-2*i, 0)
+				if degree == 180:
+					ajustment = Vector2i(-2*i, -2*i)
+				if degree == 270:
+					ajustment = Vector2i(0, -2*i)
+				cell_position += ajustment
+				
+				# tileの向きの変更
+				var new_cell_tile_name = new_cell_tile_data.get_custom_data(tile_name_key)
+				var new_cell_tile_order_id = new_cell_tile_data.get_custom_data(tile_order_id_key)
+				if new_cell_tile_name:
+					var same_tile_name_tiles = tile_set_tile_id_map[new_cell_source_id][new_cell_tile_name]
+					var current_index: int = 0
+					for same_tile_data in same_tile_name_tiles:
+						if same_tile_data.atlas_coords == new_cell_atlas_coords && same_tile_data.alternative_tile_id == new_cell_alternative_id:
+							break;
+						current_index += 1
+					var index_adjust = int(degree / 90)
+					current_index += index_adjust
+					var new_index = current_index % same_tile_name_tiles.size()
+					new_cell_atlas_coords = same_tile_name_tiles[new_index].atlas_coords
+					new_cell_alternative_id = same_tile_name_tiles[new_index].alternative_tile_id
+			
 			tile_data.tile_data.append({
 				"layer": i,
 				"cell_position": cell_position,
