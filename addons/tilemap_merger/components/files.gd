@@ -20,7 +20,7 @@ var files: Dictionary = {}
 #}
 var current_file_path: String = ""
 
-@onready var editor_plugin: EditorPlugin
+@onready var editor_plugin: EditorPlugin = EditorPlugin.new()
 
 @onready var filter_edit: LineEdit = $FileFilter
 @onready var list: ItemList = $FileList
