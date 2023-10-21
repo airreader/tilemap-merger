@@ -4,7 +4,6 @@ extends Control
 
 const MAIN_TILEMAP_PATH = "res://addons/tilemap_merger/main_tile_map.tscn"
 
-
 # vars
 var selected_tile_set: TileSet:
 	set(new_tile_set):
@@ -388,14 +387,16 @@ func _on_tile_map_folder_dialog_dir_selected(dir_path: String):
 	var tilemaps = filter_tilemap_file(paths)
 	build_grid_container(tilemaps)
 
-
-func _on_open_main_tile_map_dialog_file_selected(path):
+func load_tile_data_by_path(path):
 	var tilemap = (load(path) as PackedScene).instantiate()
 	if not tilemap is TileMap:
 		return
 	if tilemap.tile_set != null:
 		selected_tile_set = tilemap.tile_set
-	var tile_data = load_tile_map(tilemap)
+	return load_tile_map(tilemap)
+
+func _on_open_main_tile_map_dialog_file_selected(path):
+	var tile_data = load_tile_data_by_path(path)
 	load_to_main_tile_map(tile_data)
 	files.open_file(path, tile_data)
 
@@ -419,3 +420,12 @@ func _on_tile_map_container_mouse_entered():
 
 func _on_tile_map_container_mouse_exited():
 	mouse_hovered_tilemap_container = false
+
+
+func _on_files_file_reload_button_pressed(file_path):
+	var tile_data = load_tile_data_by_path(file_path)
+	files.reload_file(file_path, tile_data)
+
+
+func _on_files_file_deselected():
+	%SaveButton.disabled = true

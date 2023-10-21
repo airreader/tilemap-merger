@@ -20,4 +20,10 @@ placeholder_text = "Filter Files"
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="FileListPopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+mode = 1
+size = Vector2i(200, 60)
+
 [connection signal="item_clicked" from="FileList" to="." method="_on_file_list_item_clicked"]
+[connection signal="id_pressed" from="FileListPopupMenu" to="." method="_on_file_list_popup_menu_id_pressed"]

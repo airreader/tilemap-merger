@@ -427,6 +427,7 @@ filters = PackedStringArray("*.tscn;TileMap")
 [connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/SaveAsButton" to="." method="_on_save_as_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/OpenButton" to="." method="_on_open_button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/MenuBar/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="file_reload_button_pressed" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/Bookmarks/Files" to="." method="_on_files_file_reload_button_pressed"]
 [connection signal="file_selected" from="VBoxContainer2/HSplitContainer/MarginContainer/MarginContainer/VBoxContainer/Bookmarks/Files" to="." method="_on_files_file_selected"]
 [connection signal="mouse_entered" from="VBoxContainer2/HSplitContainer/TileMapContainer" to="." method="_on_tile_map_container_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer2/HSplitContainer/TileMapContainer" to="." method="_on_tile_map_container_mouse_exited"]

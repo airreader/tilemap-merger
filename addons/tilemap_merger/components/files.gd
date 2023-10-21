@@ -2,12 +2,14 @@
 extends VBoxContainer
 
 signal file_selected(tile_data: Array[Dictionary])
+signal file_deselected()
+signal file_reload_button_pressed(file_path: String)
 
 const MAIN_TILEMAP_PATH = "res://addons/tilemap_merger/main_tile_map.tscn"
 const MODIFIED_SUFFIX = "(*)"
+const FILE_LIST_MENU_LIST_CLOSE = 1
+const FILE_LIST_MENU_LIST_RELOAD = 2
 
-@onready var filter_edit: LineEdit = $FileFilter
-@onready var list: ItemList = $FileList
 
 var files: Dictionary = {}
 #{
@@ -20,6 +22,9 @@ var current_file_path: String = ""
 
 var editor_plugin: EditorPlugin
 
+@onready var filter_edit: LineEdit = $FileFilter
+@onready var list: ItemList = $FileList
+@onready var popup_menu: PopupMenu = %FileListPopupMenu
 
 		
 func save_as_file(tile_data: Dictionary, file_path: String = current_file_path):
@@ -45,11 +50,19 @@ func edit_file(tile_data: Dictionary):
 	
 func open_file(file_path: String, tile_data: Dictionary):
 	if files.has(file_path):
+		files[file_path].buffer_tile_data = tile_data
+		files[file_path].unsaved = false
 		select_file(current_file_path)
 	else:
 		add_list_new_file(file_path, tile_data)
 		select_file(file_path)
-	
+
+
+func reload_file(file_path: String, tile_data: Dictionary):
+	if files.has(file_path):
+		files[file_path].buffer_tile_data = tile_data
+		files[file_path].unsaved = false
+		update_file_list()
 
 func add_list_new_file(file_path: String, tile_data: Dictionary):
 	files[file_path] = {}
@@ -105,6 +118,8 @@ func file_path_dict() -> Dictionary:
 	return result
 
 func select_file(file_path: String) -> void:
+	if !file_path:
+		return
 	list.deselect_all()
 	for i in range(0, list.get_item_count()):
 		if file_path == list.get_item_metadata(i).file_path:
@@ -114,10 +129,23 @@ func select_file(file_path: String) -> void:
 
 
 func _on_file_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	var item_file_path = list.get_item_metadata(index).file_path
 	if mouse_button_index == MOUSE_BUTTON_LEFT:
-		var item_file_path = list.get_item_metadata(index).file_path
 		select_file(item_file_path)
+	if mouse_button_index == MOUSE_BUTTON_RIGHT:
+		build_popup_menu(item_file_path)
+		popup_menu.position = get_local_mouse_position()
+		popup_menu.popup()
 		
+		
+func build_popup_menu(file_path: String):
+	popup_menu.clear()
+	popup_menu.add_item("close", FILE_LIST_MENU_LIST_CLOSE)
+	popup_menu.set_item_metadata(popup_menu.get_item_index(FILE_LIST_MENU_LIST_CLOSE), file_path)
+	popup_menu.add_separator()
+	popup_menu.add_item("reload", FILE_LIST_MENU_LIST_RELOAD)
+	popup_menu.set_item_metadata(popup_menu.get_item_index(FILE_LIST_MENU_LIST_RELOAD), file_path)
+	
 
 func store_tile_map(path: String, tile_data: Dictionary):
 	var tile_map := TileMap.new() as TileMap
@@ -129,3 +157,15 @@ func store_tile_map(path: String, tile_data: Dictionary):
 	packed.pack(tile_map)
 	ResourceSaver.save(packed, path)
 
+
+func _on_file_list_popup_menu_id_pressed(id: int):
+	var file_path = popup_menu.get_item_metadata(popup_menu.get_item_index(id))
+	match id:
+		FILE_LIST_MENU_LIST_CLOSE:
+			files.erase(file_path)
+			if current_file_path == file_path:
+				current_file_path = ""
+				file_deselected.emit()
+			update_file_list()
+		FILE_LIST_MENU_LIST_RELOAD:
+			file_reload_button_pressed.emit(file_path)
