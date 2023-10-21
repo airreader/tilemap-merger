@@ -4,6 +4,7 @@ In this add-on, the following features are provided.
 
 * Merge: Pasting TileMap data onto another TileMap data is possible.
 * Rotate: Rotating isometric tilemaps is supported.
+  * Only support diamond down isometric TileMap
 * Snap: Snapping to a specified size is available.
 
 ![screenshot](https://github.com/airreader/tilemap-merger/assets/1519933/8e5da14d-e81e-46d3-a6c1-b051eb72e9fd)
