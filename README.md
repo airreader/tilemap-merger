@@ -33,7 +33,7 @@ If the tiles are directional, such as on a wall or corner of a house, the tiles 
 * `order_id`
 
 For `tile_name`, give the same name to tiles that are oriented differently but the same. The tiles will change as the tile map rotates.
-If tiles with tile_name are arranged clockwise, ｀order_id｀ need not be used. If they are not clockwise, put `order_id` so that they are clockwise.
+If tiles with tile_name are arranged clockwise, `order_id` need not be used. If they are not clockwise, put `order_id` so that they are clockwise.
 
 Rotation will not work correctly in the following cases
 * There are more than 4 tiles with the same `tile_name`.
